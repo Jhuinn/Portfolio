@@ -1,6 +1,8 @@
-
 services:
   - type: web
     name: my-project
     runtime: static
-    staticPublishPath: ./public
+    # Plain HTML/CSS/JS with Tailwind from a CDN: nothing to build, but Render requires a build command
+    buildCommand: echo "No build step"
+    # index.html is at the top of the repo (there is no public/ folder), so publish the repo root
+    staticPublishPath: .

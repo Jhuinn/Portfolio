@@ -1,0 +1,6 @@
+
+services:
+  - type: web
+    name: my-project
+    runtime: static
+    staticPublishPath: ./public

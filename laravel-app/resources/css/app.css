@@ -1,0 +1,196 @@
+@import "tailwindcss";
+@source "../js";
+
+    /* My palette. Dark mode will override these same variables later. */
+    :root {
+      --background: #E7E5E8;
+      --surface: #D4CFD0;
+      --text: #171618;
+      --text-secondary: #575458;
+      --border: #A19A9C;
+      --primary: #AF1E2B;
+      --primary-dark: #8F1823;
+      --accent-warm: #9D6852;
+      --on-primary: #FFFFFF; /* text color on top of primary buttons */
+    }
+
+    /* Dark mode: same variable names, new values (toggled by the .dark class on <html>) */
+    .dark {
+      color-scheme: dark;
+      --background: #171618;
+      --surface: #232124;
+      --text: #E7E5E8;
+      --text-secondary: #A8A2A6;
+      --border: #4A4649;
+      --primary: #EF5A63;      /* #AF1E2B is only 2.61:1 on dark, this is 5.42:1 */
+      --primary-dark: #F27A81; /* hover state: gets lighter in dark mode */
+      --accent-warm: #C08A72;
+      --on-primary: #171618;   /* white on #EF5A63 is 3.33:1, dark text is 5.42:1 */
+    }
+
+    /* Make dark: utilities follow the .dark class instead of the OS setting */
+    @custom-variant dark (&:where(.dark, .dark *));
+
+    /* "inline" makes utilities like bg-page use var(--background) directly,
+       so changing the variable re-colors everything. */
+    @theme inline {
+      --color-page: var(--background);
+      --color-surface: var(--surface);
+      --color-ink: var(--text);
+      --color-muted: var(--text-secondary);
+      --color-line: var(--border);
+      --color-primary: var(--primary);
+      --color-primary-dark: var(--primary-dark);
+      --color-accent: var(--accent-warm);
+      --color-on-primary: var(--on-primary);
+      --font-sans: "Google Sans", ui-sans-serif, system-ui, sans-serif;
+
+      /* Blinking cursor for the typing animation (used as animate-blink) */
+      --animate-blink: blink 1s step-end infinite;
+      @keyframes blink {
+        50% { opacity: 0; }
+      }
+
+      /* Tools strip: slide left by half its width. The track holds the list twice,
+         so -50% lands exactly where the copy starts and the loop looks seamless. */
+      --animate-marquee: marquee 30s linear infinite;
+      @keyframes marquee {
+        to { transform: translateX(-50%); }
+      }
+    }
+  
+button, a { touch-action: manipulation; } button { cursor:pointer; } input, select, textarea { min-width:0; }
+
+/* Reveal the next theme from the toggle, with the previous theme underneath. */
+.theme-wave::view-transition-group(root),
+.theme-wave::view-transition-old(root),
+.theme-wave::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+.theme-wave::view-transition-old(root) { z-index: 1; }
+.theme-wave::view-transition-new(root) { z-index: 2; }
+
+/* Mobile composition: generous tap targets, contained cards and compact sections. */
+.project-image-outline { transform: translate(12px, 12px); }
+@media (max-width: 767px) {
+  .site-header { position: sticky; top: 0; z-index: 40; background: var(--background); }
+  .mobile-navigation { max-height: calc(100dvh - 65px); overflow-y: auto; box-shadow: 0 16px 24px #00000012; }
+  main { min-height: 65dvh; }
+  main h1, main h2, main h3 { overflow-wrap: anywhere; }
+  .public-page > section { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .public-page > section:first-child { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+  .public-page > section > .max-w-6xl { padding: 2.5rem 0; }
+  .public-page h1 { font-size: clamp(2.25rem, 10vw, 3.25rem); line-height: 1.04; letter-spacing: -.045em; }
+  .public-page p.text-lg { font-size: 1rem; line-height: 1.75; }
+  .portfolio-page > section:first-child { gap: 1.75rem; }
+  .portfolio-page #hero-heading { font-size: clamp(2.9rem, 12vw, 4.8rem); }
+  .portfolio-page > section:first-child .mt-10.flex { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-top: 1.75rem; }
+  .portfolio-page > section:first-child .mt-10.flex > a { min-height: 3.25rem; padding: .9rem .7rem; border-radius: 999px; font-size: .65rem; letter-spacing: .06em; justify-content: center; }
+  .public-page section[aria-labelledby="tools-heading"] { padding: 1.75rem 0; }
+  .public-page section[aria-labelledby="tools-heading"] > .max-w-6xl { padding: 0 1.25rem; }
+  .public-page section[aria-labelledby="tools-heading"] .mt-6 { margin-top: 1rem; }
+  .about-page > section:first-child { position: relative; gap: 2rem; }
+  .about-page dl { margin-top: 1.5rem; padding-top: 1.5rem; }
+  .about-page dd { line-height: 1.65; font-size: .9rem; }
+  .stack-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; margin-top: 1.25rem; }
+  .stack-grid > li { position: relative; align-items: center; flex-wrap: wrap; gap: .65rem; padding: 1rem .8rem; border-radius: .85rem; }
+  .stack-grid > li > span:first-child { position: absolute; right: .7rem; top: .6rem; font-size: .6rem; }
+  .stack-grid > li > span:last-child { width: 100%; font-size: .85rem; }
+  .about-page section[aria-labelledby="soft-heading"] li { padding: 1rem; border: 1px solid var(--border); border-left: 3px solid var(--primary); border-radius: .75rem; background: color-mix(in srgb, var(--surface) 45%, var(--background)); }
+  .about-page section[aria-labelledby="soft-heading"] ul { gap: .75rem; margin-top: 1.25rem; }
+  .project-card { gap: 1.5rem; }
+  .project-card > div:first-child { margin-right: 1rem; margin-bottom: 1rem; }
+  .project-card > div:first-child > img, .project-card > div:first-child > div { border-radius: 0; }
+  .project-card > div:first-child > .project-image-outline { transform: translate(16px, 16px); }
+  .project-card h2, .project-card h3 { font-size: 1.6rem; letter-spacing: -.025em; line-height: 1.15; }
+  .project-card p.text-muted { font-size: .9rem; line-height: 1.7; }
+  .project-card p.uppercase { font-size: .65rem; letter-spacing: .08em; }
+  .project-card ul { margin-top: 1.25rem; gap: .4rem; }
+  .work-page section[aria-label="Projects"] { padding-top: .5rem; padding-bottom: 3rem; }
+  .work-page section[aria-label="Projects"] > article + article { margin-top: 2.5rem; border-top: 1px solid var(--border); padding-top: 2.5rem; }
+  .work-page > section:first-child p { font-size: .7rem; white-space: nowrap; }
+  .contact-page #contact-form { padding: 1.25rem; border-radius: 1rem; border: 1px solid var(--border); background: color-mix(in srgb, var(--surface) 35%, var(--background)); }
+  .contact-page #contact-form input, .contact-page textarea { border-radius: .65rem; background: var(--background); font-size: 1rem; }
+  .contact-page #contact-form button { width: 100%; min-height: 3rem; justify-content: center; border-radius: 999px; }
+  .contact-page aside { padding-top: 1.5rem; border-top: 1px solid var(--border); }
+  .contact-page aside a { font-size: .95rem; }
+  .management-page { padding-top: 1.75rem; }
+  .management-tabs { position: sticky; top: 65px; z-index: 20; background: var(--background); margin-top: 1rem; padding: .75rem 0; }
+  .management-tabs > a { flex: 1; padding-left: .75rem; padding-right: .75rem; }
+  .management-heading { display: block; }
+  .management-heading h1 { font-size: 2.15rem; line-height: 1.1; }
+  .management-heading .create-button { width: 100%; margin-top: 1.25rem; }
+  .record-list { display: grid; gap: .85rem; border: 0; }
+  .record-list > li { border: 1px solid var(--border); border-radius: 1rem; padding: 1rem; background: color-mix(in srgb, var(--surface) 30%, var(--background)); }
+  .record-content { flex-basis: 100%; gap: .85rem; }
+  .record-content h2 { font-size: 1.05rem; overflow-wrap: anywhere; }
+  .record-actions { width: 100%; border-top: 1px solid var(--border); padding-top: .85rem; }
+  .record-actions > * { flex: 1; background: var(--background); }
+  .project-records .record-content { display: block; }
+  .project-records .record-image { width: 100%; height: auto; max-height: 10rem; aspect-ratio: 16/9; margin-bottom: 1rem; object-fit: cover; border-radius: .65rem; }
+  .project-records .record-placeholder { margin-bottom: 1rem; }
+  .editor-page h1 { font-size: 2rem; line-height: 1.15; letter-spacing: -.025em; }
+  .editor-back { margin-bottom: 1rem; }
+  .crud-form { margin-top: 1.5rem; }
+  .crud-form > div:not(.form-actions) { margin-top: 1.25rem; }
+  .crud-form input:not([type="file"]), .crud-form textarea { font-size: 1rem; border-radius: .75rem; min-height: 3.1rem; background: color-mix(in srgb, var(--surface) 25%, var(--background)); }
+  .crud-form label { font-size: .8rem; }
+  .image-upload { padding: 1rem; border: 1px dashed var(--border); border-radius: 1rem; }
+  .image-upload button { min-height: 2.75rem; border-radius: 999px; }
+  .image-upload img { border-radius: .75rem; width: 100%; max-height: 10rem; }
+  .form-actions { position: sticky; bottom: 0; z-index: 10; gap: .75rem; padding: 1rem 0 calc(1rem + env(safe-area-inset-bottom)); background: var(--background); border-top: 1px solid var(--border); }
+  .form-actions > button { flex: 1; min-height: 3rem; border-radius: 999px; }
+  .form-actions > a { display: grid; min-height: 3rem; place-items: center; padding: 0 1.25rem; border: 1px solid var(--border); border-radius: 999px; text-decoration: none; }
+  .delete-dialog { inset: auto 0 0; width: 100%; max-width: none; max-height: 85dvh; margin: 0; padding: 1.5rem 1.25rem calc(1.5rem + env(safe-area-inset-bottom)); border-radius: 1.5rem 1.5rem 0 0; }
+  .delete-dialog > div > button { flex: 1; padding-left: .75rem; padding-right: .75rem; }
+  footer > div { gap: 1.25rem; padding: 1.75rem 1.25rem; }
+  footer > div > ul { gap: .5rem; }
+  footer > div > ul a { display: inline-flex; min-height: 2.75rem; align-items: center; padding: 0 .75rem; border: 1px solid var(--border); border-radius: 999px; font-size: .7rem; }
+  footer > p { max-width: 28rem; margin: auto; line-height: 1.8; padding: 0 1.25rem 1.5rem; }
+}
+
+/* One portrait and one set of proportions across phone, tablet and desktop. */
+.portrait-section {
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+}
+.portrait-copy { min-width: 0; }
+.portrait-frame {
+  position: relative;
+  width: min(68vw, 224px);
+  justify-self: center;
+  margin: 0 16px 16px 0;
+  isolation: isolate;
+}
+.portrait-photo {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 3;
+  object-fit: contain;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  background: #e7e5e8;
+}
+.portrait-outline {
+  position: absolute;
+  inset: 16px -16px -16px 16px;
+  border: 2px solid var(--accent-warm);
+  border-radius: 0;
+}
+@media (max-width: 767px) {
+  .portrait-section > .portrait-frame { grid-row: 1; }
+  .portrait-section > .portrait-copy { grid-row: 2; }
+  .portfolio-page > .portrait-section, .about-page > .portrait-section { gap: 2rem; }
+}
+@media (min-width: 768px) {
+  .portrait-section {
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 42%);
+    gap: clamp(1.5rem, 3vw, 2rem);
+  }
+  .portrait-frame { width: 100%; max-width: 360px; justify-self: end; }
+  .portrait-section .portrait-copy > p { max-width: 36rem; }
+}
+@media (min-width: 1024px) {
+  .portrait-section { grid-template-columns: minmax(0, 1fr) minmax(0, 320px); gap: clamp(2rem, 5vw, 4rem); }
+  .portrait-frame { max-width: 320px; }
+}

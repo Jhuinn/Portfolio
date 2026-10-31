@@ -1,0 +1,1 @@
+import Navbar from "./Navbar"; import Footer from "./Footer"; export default function Layout({children}){return <><a href="#main" className="sr-only focus:not-sr-only">Skip to content</a><Navbar/>{children}<Footer/></>}

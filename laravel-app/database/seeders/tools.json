@@ -1,0 +1,100 @@
+[
+  {
+    "name": "Claude AI",
+    "category": "AI & development",
+    "proficiency": 75,
+    "icon": "/images/tools/claude-ai.svg",
+    "display_order": 1
+  },
+  {
+    "name": "Laravel",
+    "category": "Development",
+    "proficiency": 75,
+    "icon": "https://cdn.jsdelivr.net/npm/devicon@2.17.0/icons/laravel/laravel-original.svg",
+    "display_order": 2
+  },
+  {
+    "name": "Flutter",
+    "category": "Development",
+    "proficiency": 75,
+    "icon": "https://cdn.jsdelivr.net/npm/devicon@2.17.0/icons/flutter/flutter-original.svg",
+    "display_order": 3
+  },
+  {
+    "name": "JavaScript",
+    "category": "Development",
+    "proficiency": 75,
+    "icon": "https://cdn.jsdelivr.net/npm/devicon@2.17.0/icons/javascript/javascript-original.svg",
+    "display_order": 4
+  },
+  {
+    "name": "Tailwind",
+    "category": "Development",
+    "proficiency": 75,
+    "icon": "https://cdn.jsdelivr.net/npm/devicon@2.17.0/icons/tailwindcss/tailwindcss-original.svg",
+    "display_order": 5
+  },
+  {
+    "name": "HTML",
+    "category": "Development",
+    "proficiency": 75,
+    "icon": "https://cdn.jsdelivr.net/npm/devicon@2.17.0/icons/html5/html5-original.svg",
+    "display_order": 6
+  },
+  {
+    "name": "CSS",
+    "category": "Development",
+    "proficiency": 75,
+    "icon": "https://cdn.jsdelivr.net/npm/devicon@2.17.0/icons/css3/css3-original.svg",
+    "display_order": 7
+  },
+  {
+    "name": "PHP",
+    "category": "Development",
+    "proficiency": 75,
+    "icon": "https://cdn.jsdelivr.net/npm/devicon@2.17.0/icons/php/php-original.svg",
+    "display_order": 8
+  },
+  {
+    "name": "Supabase",
+    "category": "Development",
+    "proficiency": 75,
+    "icon": "https://cdn.jsdelivr.net/npm/devicon@2.17.0/icons/supabase/supabase-original.svg",
+    "display_order": 9
+  },
+  {
+    "name": "PostgreSQL",
+    "category": "Development",
+    "proficiency": 75,
+    "icon": "https://cdn.jsdelivr.net/npm/devicon@2.17.0/icons/postgresql/postgresql-original.svg",
+    "display_order": 10
+  },
+  {
+    "name": "Figma",
+    "category": "Development",
+    "proficiency": 75,
+    "icon": "https://cdn.jsdelivr.net/npm/devicon@2.17.0/icons/figma/figma-original.svg",
+    "display_order": 11
+  },
+  {
+    "name": "TypeScript",
+    "category": "Development",
+    "proficiency": 75,
+    "icon": "https://cdn.jsdelivr.net/npm/devicon@2.17.0/icons/typescript/typescript-original.svg",
+    "display_order": 12
+  },
+  {
+    "name": "Firebase",
+    "category": "Development",
+    "proficiency": 75,
+    "icon": "https://cdn.jsdelivr.net/npm/devicon@2.17.0/icons/firebase/firebase-original.svg",
+    "display_order": 13
+  },
+  {
+    "name": "Codex",
+    "category": "AI & development",
+    "proficiency": 75,
+    "icon": "/images/tools/codex.svg",
+    "display_order": 14
+  }
+]

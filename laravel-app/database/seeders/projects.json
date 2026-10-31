@@ -1,0 +1,54 @@
+[
+  {
+    "title": "Campus Found",
+    "slug": "campus-found",
+    "description": "A lost-and-found system for our campus. Students can report items they lost or found, and admins manage the reports so items make their way back to their owners. Find it. Report it. Return it.",
+    "tech_stack": "Laravel, Supabase, Tailwind, JavaScript, HTML, PHP, Flutter, Claude AI",
+    "image": "/images/projects/campus-found.webp",
+    "category": "School project",
+    "role": "Lead programmer",
+    "completed_year": 2026,
+    "project_url": null,
+    "repository_url": null,
+    "display_order": 1
+  },
+  {
+    "title": "Tonzki MC Shop",
+    "slug": "tonzki-mc-shop",
+    "description": "A website for a motorcycle parts and repair shop. Customers can check if a part is in stock before riding over and browse the shop's services with labor prices, while the shop manages its parts and services from a dashboard.",
+    "tech_stack": "HTML, CSS, JavaScript, Laravel, Supabase, Claude AI, PHP, TypeScript",
+    "image": "/images/projects/tonzki-mc-shop.webp",
+    "category": "Client project",
+    "role": "Solo developer",
+    "completed_year": 2026,
+    "project_url": null,
+    "repository_url": null,
+    "display_order": 2
+  },
+  {
+    "title": "Game Console",
+    "slug": "game-console",
+    "description": "A console-style game launcher for mobile. It puts your games in one place, shows live CPU, RAM, storage, ping, and battery temperature while you choose what to play, and tracks how long you play each day and week.",
+    "tech_stack": "Flutter, Dart, Firebase, JavaScript, Antigravity, Claude AI, Kotlin",
+    "image": "/images/projects/game-console.webp",
+    "category": "School & client project",
+    "role": "Solo developer",
+    "completed_year": 2025,
+    "project_url": null,
+    "repository_url": null,
+    "display_order": 3
+  },
+  {
+    "title": "Campus Found — App Design",
+    "slug": "campus-found-design",
+    "description": "The UI/UX design for the Campus Found mobile app, made in Figma: 20+ screens covering sign-up, the item feed, a campus map, smart matches, claims, chat, notifications, and settings, plus pages for the admin website and student app.",
+    "tech_stack": "Figma",
+    "image": "/images/projects/campus-found-figma.webp",
+    "category": "School project",
+    "role": "Designer",
+    "completed_year": 2026,
+    "project_url": null,
+    "repository_url": null,
+    "display_order": 4
+  }
+]

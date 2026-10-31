@@ -1,0 +1,5 @@
+# Local screenshots and one-off conversion/browser verification helpers.
+/output/
+/scripts/
+__pycache__/
+*.pyc
